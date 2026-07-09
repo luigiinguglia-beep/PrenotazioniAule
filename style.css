@@ -179,10 +179,13 @@ main {
 
 #view-login {
   min-height: calc(100vh - 14px);
-  display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px;
+}
+
+#view-login.active {
+  display: flex;
 }
 
 .login-card {
@@ -293,6 +296,24 @@ main {
   margin-bottom: 22px;
   font-family: var(--font-mono);
 }
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--cream-panel);
+  border: 1.5px solid var(--line);
+  color: var(--blue-deep);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13.5px;
+  padding: 8px 14px 8px 12px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+  transition: border-color .15s ease, background .15s ease, transform .1s ease;
+}
+.btn-back:hover { border-color: var(--blue-mid); background: var(--cream); }
+.btn-back:active { transform: scale(0.98); }
 
 .crumbs button {
   background: none;
