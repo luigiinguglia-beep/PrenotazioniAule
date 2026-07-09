@@ -196,8 +196,8 @@ const APP_CONFIG = {
           capienza: 25,
           note: "",
           calendarId: "https://calendar.app.google/tDUBoiNESpFzqquCA"
-        },
-       
+        }
+     
       ]
     }
   ]
