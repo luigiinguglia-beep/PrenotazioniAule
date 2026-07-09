@@ -88,14 +88,14 @@ const APP_CONFIG = {
           capienza: 18,
           note: "Lezioni immersive con Mozaik",
           calendarId: "https://calendar.app.google/sCMkNv6tRH5BCH8V6"
-        }
+        },
         {
           id: "sci-art",
           nome: "Laboratorio Sci-Art",
           capienza: 40,
           note: "Laboratorio di Arte e Scienza",
           calendarId: "https://calendar.app.google/z9QUkir8fKmiPEcH6"
-        }
+        },
         
       {
        id: "aula-magna",
