@@ -27,7 +27,7 @@ const APP_CONFIG = {
   // e incollalo qui sotto sostituendo il valore esistente.
   //
   // Hash corrente per la password di esempio "MontiIblei2025":
-  passwordHash: "7ba5f774ce3ebab0bf1fefc07d3d39f5a9ebf9e28ea05e4524ab8a340634fa21",
+  passwordHash: "036e7ecfdf6a63b67d3bd7fd05f648ab16ca7c9e86c3888096adf02b4f0866c4",
 
   // --------------------------------------------------------------------
   // AMMINISTRATORE DIGITALE
