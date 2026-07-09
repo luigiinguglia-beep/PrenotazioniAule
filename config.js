@@ -26,7 +26,7 @@ const APP_CONFIG = {
   // repository), digita la nuova password, copia l'hash che compare
   // e incollalo qui sotto sostituendo il valore esistente.
   //
-  // Hash corrente per la password di esempio "MontiIblei2025":
+  // 
   passwordHash: "036e7ecfdf6a63b67d3bd7fd05f648ab16ca7c9e86c3888096adf02b4f0866c4",
 
   // --------------------------------------------------------------------
