@@ -91,7 +91,25 @@
       <p>Verifica la disponibilità e invia la richiesta di prenotazione all'amministratore digitale.</p>
     </div>
 
-    <div class="booking-layout">
+    <!-- Modalità A: link diretto a pagina di pianificazione Google Calendar -->
+    <div class="panel" id="prenota-direct-mode">
+      <div class="panel-head">
+        <h3>Prenota questa aula</h3>
+        <span class="badge hidden" id="prenota-capienza-badge-direct"></span>
+      </div>
+      <div class="form-body" style="text-align:center;">
+        <div class="notice" style="text-align:left;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>Si aprirà la pagina di Google Calendar dell'aula: lì potrai vedere gli orari liberi e prenotare direttamente, senza bisogno di ulteriori richieste.</span>
+        </div>
+        <a class="btn-cta" id="prenota-direct-link" href="#" target="_blank" rel="noopener" style="text-decoration:none; display:inline-flex;">
+          Apri il calendario e prenota
+        </a>
+      </div>
+    </div>
+
+    <!-- Modalità B/C: anteprima calendario incorporata + modulo di richiesta -->
+    <div class="booking-layout" id="prenota-form-mode">
 
       <!-- Anteprima calendario -->
       <div class="panel">

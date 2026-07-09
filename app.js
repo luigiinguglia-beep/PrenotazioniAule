@@ -145,7 +145,12 @@ async function handleLogin(e) {
     sessionStorage.setItem(SESSION_KEY, "1");
     errorBox.textContent = "";
     input.value = "";
-    enterApp();
+    try {
+      enterApp();
+    } catch (err) {
+      errorBox.textContent = "Password corretta, ma si è verificato un errore nell'apertura dell'app: " + err.message;
+      console.error(err);
+    }
   } else {
     errorBox.textContent = "Password non corretta. Riprova.";
     input.value = "";
@@ -223,12 +228,16 @@ function renderAule() {
     const card = document.createElement("button");
     card.className = "card";
     card.type = "button";
+    const isDirectLink = !!(aula.calendarId && /^https?:\/\//i.test(aula.calendarId));
+    const calendarBadge = isDirectLink
+      ? `<span class="badge">Prenotazione diretta</span>`
+      : (aula.calendarId ? `<span class="badge">Calendario disponibile</span>` : `<span class="badge">Senza anteprima</span>`);
     card.innerHTML = `
       <h3>${escapeHtml(aula.nome)}</h3>
       <p>${escapeHtml(aula.note || "")}</p>
       <div class="meta">
         ${aula.capienza ? `<span class="badge">${aula.capienza} posti</span>` : ""}
-        ${aula.calendarId ? `<span class="badge">Calendario disponibile</span>` : `<span class="badge">Senza anteprima</span>`}
+        ${calendarBadge}
       </div>
       <div class="go">Prenota &rarr;</div>
     `;
@@ -248,6 +257,35 @@ function openAula(aula) {
   el("prenota-aula-crumb").textContent = aula.nome;
   el("prenota-plesso-crumb").textContent = state.plesso.nome;
   el("prenota-notice-text").textContent = APP_CONFIG.noticeText;
+
+  const isDirectLink = !!(aula.calendarId && /^https?:\/\//i.test(aula.calendarId));
+
+  const directPanel = el("prenota-direct-mode");
+  const formPanel = el("prenota-form-mode");
+
+  if (isDirectLink) {
+    // Modalità A: link diretto alla pagina di pianificazione Google Calendar
+    directPanel.classList.remove("hidden");
+    formPanel.classList.add("hidden");
+
+    el("prenota-direct-link").href = aula.calendarId;
+
+    const capBadgeDirect = el("prenota-capienza-badge-direct");
+    if (aula.capienza) {
+      capBadgeDirect.textContent = `${aula.capienza} posti`;
+      capBadgeDirect.classList.remove("hidden");
+    } else {
+      capBadgeDirect.classList.add("hidden");
+    }
+
+    showView("view-prenota");
+    return;
+  }
+
+  // Modalità B/C: anteprima calendario incorporata (se presente un ID
+  // di calendario "classico") + modulo di richiesta come invito email
+  directPanel.classList.add("hidden");
+  formPanel.classList.remove("hidden");
 
   const capBadge = el("prenota-capienza-badge");
   if (aula.capienza) {

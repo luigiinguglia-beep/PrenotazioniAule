@@ -25,19 +25,18 @@ const APP_CONFIG = {
   // Per generarne uno nuovo apri "genera-hash.html" (incluso nel
   // repository), digita la nuova password, copia l'hash che compare
   // e incollalo qui sotto sostituendo il valore esistente.
-  //
-  // 
   passwordHash: "036e7ecfdf6a63b67d3bd7fd05f648ab16ca7c9e86c3888096adf02b4f0866c4",
 
   // --------------------------------------------------------------------
   // AMMINISTRATORE DIGITALE
   // --------------------------------------------------------------------
   // Email che verrà aggiunta automaticamente come invitato/gestore
-  // quando qualcuno compila una richiesta di prenotazione: la richiesta
-  // arriverà così sul suo Google Calendar per essere accettata o rifiutata.
+  // quando qualcuno compila una richiesta di prenotazione tramite il
+  // modulo di riserva (usato solo per le aule senza link diretto).
   adminEmail: "amministratore.digitale@icsmontiiblei.edu.it",
 
-  // Testo mostrato nel banner informativo sopra il modulo di richiesta.
+  // Testo mostrato nel banner informativo sopra il modulo di richiesta
+  // (usato solo per le aule senza link diretto di prenotazione).
   noticeText: "La prenotazione non è immediata: compilando il modulo si apre " +
     "una bozza di evento su Google Calendar da inviare all'amministratore " +
     "digitale, che dovrà accettarla per confermare l'aula.",
@@ -45,22 +44,22 @@ const APP_CONFIG = {
   // --------------------------------------------------------------------
   // PLESSI E AULE
   // --------------------------------------------------------------------
-  // Ogni plesso ha un elenco di aule. Ogni aula, se ha un calendario
-  // Google dedicato, mostra la disponibilità incorporata nella pagina.
+  // Ogni plesso ha un elenco di aule. Per ogni aula, il campo
+  // "calendarId" può essere:
   //
-  // Come trovare "calendarId" di un'aula:
-  // 1. Su Google Calendar, crea (o apri) il calendario dedicato all'aula.
-  // 2. Impostazioni calendario → "Rendi disponibile pubblicamente" (se si
-  //    vuole mostrare la disponibilità a tutti) oppure condividilo con
-  //    chi userà l'app.
-  // 3. In "Integra calendario" copia l'ID calendario (es.
-  //    "xxxxxxxxxxxx@group.calendar.google.com" oppure, per il calendario
-  //    principale dell'amministratore, la sua email).
+  //  A) un link "https://calendar.app.google/..." (pagina di
+  //     pianificazione appuntamenti di Google Calendar): in questo caso
+  //     l'app mostra un pulsante che apre direttamente quella pagina,
+  //     dove si sceglie data/ora e si prenota in autonomia;
   //
-  // Se un'aula non ha ancora un calendario dedicato, lascia calendarId
-  // vuoto (""): l'app userà comunque il calendario dell'amministratore
-  // per l'invio della richiesta, semplicemente senza mostrare l'anteprima
-  // di disponibilità incorporata.
+  //  B) un ID di calendario "classico" (es.
+  //     "xxxxxxxxxxxx@group.calendar.google.com"): in questo caso l'app
+  //     mostra un'anteprima incorporata del calendario e un modulo per
+  //     inviare una richiesta di prenotazione come invito email
+  //     all'amministratore digitale;
+  //
+  //  C) stringa vuota (""): l'app mostra solo il modulo di richiesta,
+  //     senza alcuna anteprima.
 
   plessi: [
     {
@@ -96,14 +95,13 @@ const APP_CONFIG = {
           note: "Laboratorio di Arte e Scienza",
           calendarId: "https://calendar.app.google/z9QUkir8fKmiPEcH6"
         },
-        
-      {
-       id: "aula-magna",
-       nome: "Auditorium",
-       capienza: 120,
-       note: "Dotata di proiettore e impianto audio.",
-       calendarId: "https://calendar.app.google/SLJECDTkUoy9HskEA"
-     },
+        {
+          id: "aula-magna",
+          nome: "Auditorium",
+          capienza: 120,
+          note: "Dotata di proiettore e impianto audio.",
+          calendarId: "https://calendar.app.google/SLJECDTkUoy9HskEA"
+        }
       ]
     },
     {
@@ -147,14 +145,13 @@ const APP_CONFIG = {
           calendarId: "https://calendar.app.google/qRqjUsfu4d6vnj24A"
         }
       ]
-    }
+    },
     {
       id: "plesso-gandhi",
       nome: "Plesso M. Gandhi",
       indirizzo: "Via Sardegna 55, Palermo",
       aule: [
-       
-         {
+        {
           id: "aula-robotica",
           nome: "Aula Robotica",
           capienza: 25,
@@ -162,7 +159,7 @@ const APP_CONFIG = {
           calendarId: "https://calendar.app.google/ZUXSbgdHTqbU2him8"
         },
         {
-          id: "aula-multimediale",
+          id: "aula-multimediale-gandhi",
           nome: "Aula Multimediale",
           capienza: 25,
           note: "",
@@ -183,21 +180,19 @@ const APP_CONFIG = {
           calendarId: "https://calendar.app.google/GNGaZsKV56ruwmTp6"
         }
       ]
-    }
+    },
     {
       id: "plesso-malaguzzi",
       nome: "Plesso L. Malaguzzi",
       indirizzo: "Via Monti Iblei 49/53, Palermo",
       aule: [
-       
-         {
+        {
           id: "aula-sensoriale",
           nome: "Aula Sensoriale",
           capienza: 25,
           note: "",
           calendarId: "https://calendar.app.google/tDUBoiNESpFzqquCA"
         }
-     
       ]
     }
   ]
