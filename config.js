@@ -65,51 +65,139 @@ const APP_CONFIG = {
   plessi: [
     {
       id: "sede-centrale",
-      nome: "Sede Centrale — V.E. Orlando",
-      indirizzo: "Via Esempio 1, Palermo",
+      nome: "V.E. Orlando",
+      indirizzo: "Via Lussemburgo 103, Palermo",
       aule: [
         {
-          id: "aula-magna",
-          nome: "Aula Magna",
+          id: "aula-informatica",
+          nome: "Aula Informatica",
           capienza: 120,
-          note: "Dotata di proiettore e impianto audio.",
-          calendarId: ""
+          note: "Dotata di pc e Monitor touch.",
+          calendarId: "https://calendar.app.google/1BkvbHZMGzrgUYrz9"
         },
         {
-          id: "laboratorio-informatica",
-          nome: "Laboratorio di Informatica",
-          capienza: 26,
-          note: "24 postazioni PC.",
-          calendarId: ""
+          id: "aula-stem",
+          nome: "Aula Stem 4.0",
+          capienza: 20,
+          note: "Tablet e Monitor Touch",
+          calendarId: "https://calendar.app.google/qGGwsVdQ7eGJUuoAA"
         },
         {
-          id: "palestra",
-          nome: "Palestra",
-          capienza: 60,
-          note: "",
-          calendarId: ""
+          id: "aula-immersiva",
+          nome: "Aula Immersiva",
+          capienza: 18,
+          note: "Lezioni immersive con Mozaik",
+          calendarId: "https://calendar.app.google/sCMkNv6tRH5BCH8V6"
         }
+        {
+          id: "sci-art",
+          nome: "Laboratorio Sci-Art",
+          capienza: 40,
+          note: "Laboratorio di Arte e Scienza",
+          calendarId: "https://calendar.app.google/z9QUkir8fKmiPEcH6"
+        }
+        
+      {
+       id: "aula-magna",
+       nome: "Auditorium",
+       capienza: 120,
+       note: "Dotata di proiettore e impianto audio.",
+       calendarId: "https://calendar.app.google/SLJECDTkUoy9HskEA"
+     },
       ]
     },
     {
-      id: "plesso-monti-iblei",
-      nome: "Plesso Monti Iblei",
-      indirizzo: "Via Esempio 2, Palermo",
+      id: "plesso-fava",
+      nome: "Plesso G. Fava",
+      indirizzo: "Via Monte San Calogero 20, Palermo",
       aule: [
         {
-          id: "aula-lim-1",
-          nome: "Aula LIM 1",
+          id: "aula-musica",
+          nome: "Aula Musica",
           capienza: 25,
           note: "",
-          calendarId: ""
+          calendarId: "https://calendar.app.google/UxpUETZ6C4tav3tV6"
         },
         {
-          id: "biblioteca",
-          nome: "Biblioteca",
+          id: "lab-scientifico",
+          nome: "Laboratorio Scientifico",
+          capienza: 25,
+          note: "",
+          calendarId: "https://calendar.app.google/7VVeny7NwUxuSJs8A"
+        },
+        {
+          id: "aula-multimediale",
+          nome: "Aula Multimediale",
+          capienza: 25,
+          note: "",
+          calendarId: "https://calendar.app.google/vdpftGucQPZ7swE19"
+        },
+        {
+          id: "aula-rob-1",
+          nome: "Laboratorio Robotica 1",
+          capienza: 25,
+          note: "",
+          calendarId: "https://calendar.app.google/v2JjiqK2stagtd7S8"
+        },
+        {
+          id: "aula-rob-2",
+          nome: "Laboratorio Robotica 2",
           capienza: 30,
           note: "",
-          calendarId: ""
+          calendarId: "https://calendar.app.google/qRqjUsfu4d6vnj24A"
         }
+      ]
+    }
+    {
+      id: "plesso-gandhi",
+      nome: "Plesso M. Gandhi",
+      indirizzo: "Via Sardegna 55, Palermo",
+      aule: [
+       
+         {
+          id: "aula-robotica",
+          nome: "Aula Robotica",
+          capienza: 25,
+          note: "",
+          calendarId: "https://calendar.app.google/ZUXSbgdHTqbU2him8"
+        },
+        {
+          id: "aula-multimediale",
+          nome: "Aula Multimediale",
+          capienza: 25,
+          note: "",
+          calendarId: "https://calendar.app.google/izjSPmF43xycvUkL8"
+        },
+        {
+          id: "carrello-sci-1",
+          nome: "Carrello scientifico 1",
+          capienza: 25,
+          note: "",
+          calendarId: "https://calendar.app.google/mYw9BGdFNDoyV1jU8"
+        },
+        {
+          id: "carrello-sci-2",
+          nome: "Carrello scientifico 2",
+          capienza: 30,
+          note: "",
+          calendarId: "https://calendar.app.google/GNGaZsKV56ruwmTp6"
+        }
+      ]
+    }
+    {
+      id: "plesso-malaguzzi",
+      nome: "Plesso L. Malaguzzi",
+      indirizzo: "Via Monti Iblei 49/53, Palermo",
+      aule: [
+       
+         {
+          id: "aula-sensoriale",
+          nome: "Aula Sensoriale",
+          capienza: 25,
+          note: "",
+          calendarId: "https://calendar.app.google/tDUBoiNESpFzqquCA"
+        },
+       
       ]
     }
   ]
