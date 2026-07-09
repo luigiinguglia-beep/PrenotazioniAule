@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genera hash password — Prenotazione Aule</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="tile-band" aria-hidden="true"></div>
+<main style="max-width:520px;">
+  <div class="view-heading">
+    <h2>Genera l'hash della password</h2>
+    <p>
+      Strumento ad uso interno: non serve per usare l'app di prenotazione,
+      serve solo a chi deve <strong>cambiare la password d'accesso</strong>
+      (ad esempio a inizio anno scolastico). Questa pagina gira solo nel tuo
+      browser: la password che digiti non viene inviata da nessuna parte.
+    </p>
+  </div>
+
+  <div class="panel">
+    <div class="form-body">
+      <div class="field">
+        <label for="pwd">Nuova password d'istituto</label>
+        <input type="text" id="pwd" placeholder="Scrivi qui la nuova password">
+      </div>
+      <div class="field">
+        <label for="hash">Hash da incollare in config.js</label>
+        <textarea id="hash" rows="2" readonly style="font-family: var(--font-mono); font-size: 13px;"></textarea>
+      </div>
+      <p class="helper">
+        Copia il valore qui sopra e incollalo come <code>passwordHash</code>
+        dentro <code>config.js</code>, sostituendo il valore esistente.
+        Poi comunica la nuova password (in chiaro, non l'hash) al personale
+        tramite un canale esterno all'app, ad es. circolare interna o email.
+      </p>
+    </div>
+  </div>
+</main>
+
+<script>
+async function sha256Hex(text) {
+  const enc = new TextEncoder().encode(text);
+  const digest = await crypto.subtle.digest("SHA-256", enc);
+  return Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+const pwdInput = document.getElementById("pwd");
+const hashBox = document.getElementById("hash");
+
+pwdInput.addEventListener("input", async () => {
+  if (!pwdInput.value) {
+    hashBox.value = "";
+    return;
+  }
+  hashBox.value = await sha256Hex(pwdInput.value);
+});
+</script>
+</body>
+</html>

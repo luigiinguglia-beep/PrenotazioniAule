@@ -1,0 +1,548 @@
+/* ============================================================
+   ICS Monti Iblei - V.E. Orlando — Prenotazione Aule
+   Sistema di design: ceramica siciliana (maiolica di Caltagirone)
+   applicata a un'interfaccia amministrativa sobria.
+   ============================================================ */
+
+:root {
+  /* Colore */
+  --blue-deep:   #1B4B6B; /* blu maiolica, primario */
+  --blue-mid:    #2D6E8E; /* blu secondario, hover */
+  --sun-yellow:  #E8A93A; /* giallo maiolica, accento */
+  --terracotta:  #C0562F; /* terracotta, accento CTA, uso limitato */
+  --cream:       #FAF7F0; /* sfondo caldo */
+  --cream-panel: #FFFFFF; /* pannelli/carte */
+  --ink:         #1F2A30; /* testo primario */
+  --ink-soft:    #55636A; /* testo secondario */
+  --line:        #E1D9C6; /* divisori */
+  --line-soft:   #EFE9DA;
+  --danger:      #B3402A;
+  --success:     #2F7A4F;
+
+  /* Tipografia */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+
+  /* Layout */
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --radius-sm: 7px;
+  --shadow-card: 0 1px 2px rgba(27,75,107,0.06), 0 8px 24px -12px rgba(27,75,107,0.18);
+  --shadow-pop: 0 12px 40px -16px rgba(27,75,107,0.35);
+  --maxw: 1080px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--blue-deep);
+  margin: 0;
+}
+
+a { color: var(--blue-mid); }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--sun-yellow);
+  outline-offset: 2px;
+}
+
+/* ---------- Motivo maiolica (elemento firma) ---------- */
+
+.tile-band {
+  height: 14px;
+  width: 100%;
+  background-image:
+    linear-gradient(135deg, var(--blue-deep) 25%, transparent 25%),
+    linear-gradient(225deg, var(--blue-deep) 25%, transparent 25%),
+    linear-gradient(45deg, var(--sun-yellow) 25%, transparent 25%),
+    linear-gradient(315deg, var(--sun-yellow) 25%, transparent 25%);
+  background-position: 14px 0, 14px 0, 0 0, 0 0;
+  background-size: 28px 28px;
+  background-repeat: repeat-x;
+  background-color: var(--terracotta);
+  flex-shrink: 0;
+}
+
+/* ---------- Header applicativo ---------- */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px clamp(16px, 4vw, 40px);
+  border-bottom: 1px solid var(--line);
+  background: var(--cream-panel);
+}
+
+.app-header .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  background: linear-gradient(160deg, var(--blue-deep), var(--blue-mid));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sun-yellow);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.brand-text .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  display: block;
+}
+
+.brand-text h1 {
+  font-size: 19px;
+  line-height: 1.2;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  transition: border-color .15s ease, color .15s ease;
+}
+.btn-logout:hover { border-color: var(--blue-mid); color: var(--blue-deep); }
+
+/* ---------- Contenitore principale ---------- */
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 44px) clamp(16px, 4vw, 40px) 64px;
+}
+
+.view { display: none; }
+.view.active { display: block; animation: rise .35s ease both; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Schermata di accesso ---------- */
+
+#view-login {
+  min-height: calc(100vh - 14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--cream-panel);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-pop);
+  padding: 36px 32px 32px;
+  text-align: center;
+}
+
+.login-card .brand-mark {
+  margin: 0 auto 18px;
+  width: 52px;
+  height: 52px;
+  font-size: 24px;
+  border-radius: 12px;
+}
+
+.login-card .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.login-card h2 {
+  font-size: 22px;
+  margin: 6px 0 4px;
+}
+
+.login-card p.sub {
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin: 0 0 24px;
+  line-height: 1.5;
+}
+
+.field {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.field input[type="password"],
+.field input[type="text"],
+.field input[type="date"],
+.field input[type="time"],
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--line);
+  background: var(--cream);
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--ink);
+  transition: border-color .15s ease, background .15s ease;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--blue-mid);
+  background: var(--cream-panel);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--blue-deep);
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background .15s ease, transform .1s ease;
+}
+.btn-primary:hover { background: var(--blue-mid); }
+.btn-primary:active { transform: scale(0.99); }
+
+.login-error {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--danger);
+  min-height: 18px;
+}
+
+/* ---------- Breadcrumb / navigazione ---------- */
+
+.crumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 22px;
+  font-family: var(--font-mono);
+}
+
+.crumbs button {
+  background: none;
+  border: none;
+  color: var(--blue-mid);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 2px 4px;
+}
+.crumbs button:hover { text-decoration: underline; }
+.crumbs .sep { color: var(--line); }
+.crumbs .current { color: var(--ink); }
+
+.view-heading {
+  margin-bottom: 26px;
+}
+
+.view-heading h2 {
+  font-size: clamp(24px, 3vw, 30px);
+  margin-bottom: 6px;
+}
+
+.view-heading p {
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* ---------- Griglie di carte ---------- */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  position: relative;
+  background: var(--cream-panel);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  text-align: left;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--blue-deep), var(--sun-yellow) 50%, var(--terracotta));
+  opacity: 0;
+  transition: opacity .15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-pop);
+  border-color: transparent;
+}
+.card:hover::before { opacity: 1; }
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.card p {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+.card .meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  padding: 4px 9px;
+  border-radius: 100px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+
+.card .go {
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue-deep);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.card:hover .go { color: var(--terracotta); }
+
+/* ---------- Vista aula / prenotazione ---------- */
+
+.booking-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .booking-layout { grid-template-columns: 1fr; }
+}
+
+.panel {
+  background: var(--cream-panel);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.panel-head {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-head h3 {
+  font-size: 15.5px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.panel-head .badge { font-size: 11px; }
+
+.calendar-frame-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--cream);
+}
+
+.calendar-frame-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.calendar-empty {
+  padding: 26px 20px;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.form-body { padding: 20px 22px 22px; }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.helper {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 5px;
+}
+
+.notice {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: #FBF3E4;
+  border: 1px solid #EBD9AE;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 12.8px;
+  color: #6B4E1D;
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+
+.notice svg { flex-shrink: 0; margin-top: 1px; }
+
+.submit-row {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-cta {
+  width: 100%;
+  padding: 13px 16px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--terracotta);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background .15s ease, transform .1s ease;
+}
+.btn-cta:hover { background: #A5461F; }
+.btn-cta:active { transform: scale(0.99); }
+.btn-cta:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.cta-caption {
+  text-align: center;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+
+/* ---------- Footer ---------- */
+
+.app-footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--ink-soft);
+  padding: 18px 20px 30px;
+}
+
+.app-footer a { color: var(--ink-soft); }
+
+/* ---------- Utility ---------- */
+
+.hidden { display: none !important; }
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--ink-soft);
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prenotazione Aule — ICS Monti Iblei - V.E. Orlando</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="tile-band" aria-hidden="true"></div>
+
+<header class="app-header hidden" id="app-header">
+  <div class="brand">
+    <div class="brand-mark">MI</div>
+    <div class="brand-text">
+      <span class="eyebrow">ICS Monti Iblei · V.E. Orlando</span>
+      <h1>Prenotazione Aule</h1>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="btn-logout" id="btn-logout" type="button">Esci</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================================================ -->
+  <!-- VISTA: LOGIN                                                   -->
+  <!-- ============================================================ -->
+  <section class="view" id="view-login">
+    <div class="login-card">
+      <div class="brand-mark">MI</div>
+      <span class="eyebrow">ICS Monti Iblei · V.E. Orlando</span>
+      <h2>Prenotazione Aule</h2>
+      <p class="sub">Inserisci la password d'istituto per accedere all'elenco dei plessi e delle aule prenotabili.</p>
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="login-password">Password d'accesso</label>
+          <input type="password" id="login-password" name="password" autocomplete="current-password" required autofocus>
+        </div>
+        <button type="submit" class="btn-primary">Accedi</button>
+        <div class="login-error" id="login-error" role="alert"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- VISTA: ELENCO PLESSI                                           -->
+  <!-- ============================================================ -->
+  <section class="view" id="view-plessi">
+    <div class="view-heading">
+      <h2>Seleziona un plesso</h2>
+      <p>Scegli il plesso per vedere le aule prenotabili e la loro disponibilità.</p>
+    </div>
+    <div class="card-grid" id="plessi-grid"></div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- VISTA: ELENCO AULE                                             -->
+  <!-- ============================================================ -->
+  <section class="view" id="view-aule">
+    <nav class="crumbs" aria-label="percorso">
+      <button type="button" data-nav="plessi">Plessi</button>
+      <span class="sep">/</span>
+      <span class="current" id="aule-plesso-crumb"></span>
+    </nav>
+    <div class="view-heading">
+      <h2 id="aule-plesso-nome"></h2>
+      <p>Scegli l'aula da prenotare. Se disponibile, potrai vedere in anteprima il calendario con gli impegni già fissati.</p>
+    </div>
+    <div class="card-grid" id="aule-grid"></div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- VISTA: PRENOTAZIONE AULA                                       -->
+  <!-- ============================================================ -->
+  <section class="view" id="view-prenota">
+    <nav class="crumbs" aria-label="percorso">
+      <button type="button" data-nav="plessi">Plessi</button>
+      <span class="sep">/</span>
+      <button type="button" data-nav="aule" id="prenota-plesso-crumb"></button>
+      <span class="sep">/</span>
+      <span class="current" id="prenota-aula-crumb"></span>
+    </nav>
+
+    <div class="view-heading">
+      <h2 id="prenota-aula-nome"></h2>
+      <p>Verifica la disponibilità e invia la richiesta di prenotazione all'amministratore digitale.</p>
+    </div>
+
+    <div class="booking-layout">
+
+      <!-- Anteprima calendario -->
+      <div class="panel">
+        <div class="panel-head">
+          <h3>Disponibilità</h3>
+          <span class="badge hidden" id="prenota-capienza-badge"></span>
+        </div>
+        <div class="calendar-frame-wrap" id="calendar-frame-wrap"></div>
+        <div class="calendar-empty" id="calendar-empty">
+          Per questa aula non è ancora stato collegato un calendario Google.
+          Puoi comunque inviare la richiesta di prenotazione qui a fianco:
+          l'amministratore digitale verificherà la disponibilità.
+        </div>
+      </div>
+
+      <!-- Modulo di richiesta -->
+      <div class="panel">
+        <div class="panel-head">
+          <h3>Richiedi la prenotazione</h3>
+        </div>
+        <div class="form-body">
+
+          <div class="notice">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="prenota-notice-text"></span>
+          </div>
+
+          <form id="booking-form" novalidate>
+            <div class="field">
+              <label for="bk-nome">Nome e cognome *</label>
+              <input type="text" id="bk-nome" required>
+            </div>
+            <div class="field">
+              <label for="bk-classe">Classe / sezione</label>
+              <input type="text" id="bk-classe" placeholder="es. 3ª B">
+            </div>
+            <div class="field">
+              <label for="bk-data">Data *</label>
+              <input type="date" id="bk-data" required>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="bk-ora-inizio">Ora inizio *</label>
+                <input type="time" id="bk-ora-inizio" required value="09:00">
+              </div>
+              <div class="field">
+                <label for="bk-ora-fine">Ora fine *</label>
+                <input type="time" id="bk-ora-fine" required value="10:00">
+              </div>
+            </div>
+            <div class="field">
+              <label for="bk-motivo">Motivo della prenotazione</label>
+              <textarea id="bk-motivo" rows="2" placeholder="es. Attività di laboratorio"></textarea>
+            </div>
+
+            <div class="submit-row">
+              <button type="submit" class="btn-cta">
+                Apri richiesta su Google Calendar
+              </button>
+              <span class="cta-caption">Si aprirà una nuova scheda: dovrai premere "Salva" per inviare l'invito all'amministratore digitale.</span>
+            </div>
+            <div class="login-error" id="booking-error" role="alert"></div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="app-footer">
+  ICS Monti Iblei - V.E. Orlando &middot; Prenotazione aule
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
