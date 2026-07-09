@@ -53,7 +53,21 @@ async function handleLogin(e) {
 
   if (!value) return;
 
-  const hash = await sha256Hex(value);
+  if (!window.crypto || !window.crypto.subtle) {
+    errorBox.textContent = "Il browser ha bloccato la verifica sicura della password perché la pagina è " +
+      "aperta come file locale (file://). Apri l'app tramite un server locale (es. \"python3 -m http.server\") " +
+      "oppure tramite l'indirizzo pubblicato su GitHub Pages (https://...).";
+    return;
+  }
+
+  let hash;
+  try {
+    hash = await sha256Hex(value);
+  } catch (err) {
+    errorBox.textContent = "Errore imprevisto durante la verifica della password. Riprova o ricarica la pagina.";
+    console.error(err);
+    return;
+  }
 
   if (hash === APP_CONFIG.passwordHash) {
     sessionStorage.setItem(SESSION_KEY, "1");

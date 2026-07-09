@@ -58,6 +58,11 @@ pwdInput.addEventListener("input", async () => {
     hashBox.value = "";
     return;
   }
+  if (!window.crypto || !window.crypto.subtle) {
+    hashBox.value = "Impossibile calcolare l'hash: apri questa pagina tramite un server locale " +
+      "(es. \"python3 -m http.server\") o tramite l'indirizzo pubblicato su GitHub Pages, non con doppio clic.";
+    return;
+  }
   hashBox.value = await sha256Hex(pwdInput.value);
 });
 </script>
