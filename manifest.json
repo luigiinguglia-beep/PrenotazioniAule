@@ -1,0 +1,12 @@
+{
+  "name": "Prenotazione Aule — ICS Monti Iblei - V.E. Orlando",
+  "short_name": "MI VEO Booking",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FAF7F0",
+  "theme_color": "#1B4B6B",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
