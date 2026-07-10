@@ -200,6 +200,13 @@ main {
   box-shadow: var(--shadow-pop);
   padding: 36px 32px 32px;
   text-align: center;
+  transform: translateY(-8vh);
+}
+
+@media (max-height: 640px) {
+  .login-card {
+    transform: translateY(-2vh);
+  }
 }
 
 .login-card .brand-mark {
