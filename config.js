@@ -67,7 +67,15 @@ const APP_CONFIG = {
       nome: "V.E. Orlando",
       indirizzo: "Via Lussemburgo 103, Palermo",
       aule: [
-        {
+           
+         {
+          id: "aula-magna",
+          nome: "Auditorium",
+          capienza: 120,
+          note: "Dotata di proiettore e impianto audio.",
+          calendarId: "https://calendar.app.google/SLJECDTkUoy9HskEA"
+        },
+         {
           id: "aula-informatica",
           nome: "Aula Informatica",
           capienza: 120,
@@ -95,13 +103,14 @@ const APP_CONFIG = {
           note: "Laboratorio di Arte e Scienza",
           calendarId: "https://calendar.app.google/z9QUkir8fKmiPEcH6"
         },
-        {
-          id: "aula-magna",
-          nome: "Auditorium",
-          capienza: 120,
-          note: "Dotata di proiettore e impianto audio.",
-          calendarId: "https://calendar.app.google/SLJECDTkUoy9HskEA"
+         {
+          id: "aula-gialla",
+          nome: "Sala Riunioni",
+          capienza: 24,
+          note: "Dotata di Monitor Touch 75".",
+          calendarId: "https://calendar.app.google/9aMHWkAy5xC2BeKq5"
         }
+        
       ]
     },
     {
