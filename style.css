@@ -305,6 +305,7 @@ main {
   color: #fff;
   font-weight: 600;
   font-size: 15px;
+  margin-top: 8px;
   transition: background .15s ease, transform .1s ease;
 }
 .btn-primary:hover { background: var(--blue-mid); }
