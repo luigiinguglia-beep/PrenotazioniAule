@@ -66,8 +66,7 @@ const APP_CONFIG = {
       id: "sede-centrale",
       nome: "V.E. Orlando",
       indirizzo: "Via Lussemburgo 103, Palermo",
-      aule: [
-           
+      aule: [           
         {
           id: "aula-magna",
           nome: "Auditorium",
@@ -109,8 +108,7 @@ const APP_CONFIG = {
           capienza: 24,
           note: "Dotata di Monitor Touch 75".",
           calendarId: "https://calendar.app.google/9aMHWkAy5xC2BeKq5"
-        }
-        
+        }        
       ]
     },
     {
