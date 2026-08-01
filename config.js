@@ -106,7 +106,7 @@ const APP_CONFIG = {
           id: "aula-gialla",
           nome: "Sala Riunioni",
           capienza: 24,
-          note: "Dotata di Monitor Touch 75".",
+          note: "Dotata di Monitor Touch da 75 pollici.",
           calendarId: "https://calendar.app.google/9aMHWkAy5xC2BeKq5"
         }        
       ]
