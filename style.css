@@ -246,7 +246,7 @@ main {
   align-items: center;
   gap: 8px;
   text-align: left;
-  margin: -8px 0 18px;
+  margin: -1px 0 18px;
 }
 
 .show-password-row input[type="checkbox"] {
