@@ -423,6 +423,10 @@ document.addEventListener("DOMContentLoaded", () => {
   el("login-form").addEventListener("submit", handleLogin);
   el("booking-form").addEventListener("submit", handleBookingSubmit);
 
+  el("login-show-password").addEventListener("change", (e) => {
+    el("login-password").type = e.target.checked ? "text" : "password";
+  });
+
   document.querySelectorAll("[data-nav='plessi']").forEach((b) => b.addEventListener("click", goToPlessi));
   document.querySelectorAll("[data-nav='aule']").forEach((b) => b.addEventListener("click", goToAule));
   el("btn-logout").addEventListener("click", logout);

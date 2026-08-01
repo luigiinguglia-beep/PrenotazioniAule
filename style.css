@@ -241,6 +241,29 @@ main {
   margin-bottom: 16px;
 }
 
+.show-password-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  margin: -8px 0 18px;
+}
+
+.show-password-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--blue-deep);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.show-password-row label {
+  font-size: 13px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  user-select: none;
+}
+
 .field label {
   display: block;
   font-size: 13px;
