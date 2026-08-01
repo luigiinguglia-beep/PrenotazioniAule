@@ -68,14 +68,14 @@ const APP_CONFIG = {
       indirizzo: "Via Lussemburgo 103, Palermo",
       aule: [
            
-         {
+        {
           id: "aula-magna",
           nome: "Auditorium",
           capienza: 120,
           note: "Dotata di proiettore e impianto audio.",
           calendarId: "https://calendar.app.google/SLJECDTkUoy9HskEA"
         },
-         {
+        {
           id: "aula-informatica",
           nome: "Aula Informatica",
           capienza: 120,
