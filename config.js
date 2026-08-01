@@ -79,7 +79,7 @@ const APP_CONFIG = {
           id: "aula-informatica",
           nome: "Aula Informatica",
           capienza: 120,
-          note: "Dotata di pc e Monitor touch.",
+          note: "Dotata di pc e Monitor Touch.",
           calendarId: "https://calendar.app.google/1BkvbHZMGzrgUYrz9"
         },
         {
