@@ -79,7 +79,7 @@ const APP_CONFIG = {
           nome: "Aula Musica",
           capienza: 25,
           note: "",
-          calendarId: "https://calendar.app.google/f1UFkzr1mDGh3p757"
+          calendarId: "https://calendar.app.google/3s8PpHZKtY55p67y8"
         },
         {
           id: "aula-informatica",
@@ -100,7 +100,7 @@ const APP_CONFIG = {
           nome: "Aula Immersiva",
           capienza: 18,
           note: "Lezioni immersive con Mozaik",
-          calendarId: "https://calendar.app.google/gAd2kvvwWAuFRj4Q6"
+          calendarId: "https://calendar.app.google/oWbkPAj53XpTwocf8"
         },
         {
           id: "sci-art",
@@ -114,7 +114,7 @@ const APP_CONFIG = {
           nome: "Sala Riunioni",
           capienza: 24,
           note: "Dotata di Monitor Touch da 75 pollici",
-          calendarId: "https://calendar.app.google/f1UFkzr1mDGh3p757"
+          calendarId: "https://calendar.app.google/ho1PWdWBRYMypx4U6"
         }        
       ]
     },
