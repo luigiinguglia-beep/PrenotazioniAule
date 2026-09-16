@@ -93,7 +93,7 @@ const APP_CONFIG = {
           nome: "Aula Immersiva",
           capienza: 18,
           note: "Lezioni immersive con Mozaik",
-          calendarId: "https://calendar.app.google/sCMkNv6tRH5BCH8V6"
+          calendarId: "https://calendar.app.google/gAd2kvvwWAuFRj4Q6"
         },
         {
           id: "sci-art",
@@ -107,7 +107,7 @@ const APP_CONFIG = {
           nome: "Sala Riunioni",
           capienza: 24,
           note: "Dotata di Monitor Touch da 75 pollici",
-          calendarId: "https://calendar.app.google/9aMHWkAy5xC2BeKq5"
+          calendarId: "https://calendar.app.google/f1UFkzr1mDGh3p757"
         }        
       ]
     },
