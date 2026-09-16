@@ -78,7 +78,7 @@ const APP_CONFIG = {
           id: "aula-musica-orlando",
           nome: "Aula Musica",
           capienza: 25,
-          note: "",
+          note: "Auletta prove musicali",
           calendarId: "https://calendar.app.google/3s8PpHZKtY55p67y8"
         },
         {
