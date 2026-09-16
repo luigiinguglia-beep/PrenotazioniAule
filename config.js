@@ -74,6 +74,13 @@ const APP_CONFIG = {
           note: "Dotata di proiettore e impianto audio.",
           calendarId: "https://calendar.app.google/SLJECDTkUoy9HskEA"
         },
+         {
+          id: "aula-musica-orlando",
+          nome: "Aula Musica",
+          capienza: 25,
+          note: "",
+          calendarId: "https://calendar.app.google/f1UFkzr1mDGh3p757"
+        },
         {
           id: "aula-informatica",
           nome: "Aula Informatica",
